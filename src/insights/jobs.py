@@ -2,58 +2,31 @@ import csv
 from functools import lru_cache
 from typing import Dict, List
 
-# path = "C:/Users/clever-junior/OneDrive/Documentos/Code/Trybe/Computer-Science/sd-021-a-project-job-insights/data/jobs.csv"
-
 
 @lru_cache
 def read(path: str) -> List[Dict]:
-    """Reads a file from a given path and returns its contents
-
-    Parameters
-    ----------
-    path : str
-        Full path to file
-
-    Returns
-    -------
-    list
-        List of rows as dicts
-    """
     with open(path, "r", encoding="utf8") as file:
         return list(csv.DictReader(file))
 
 
 def get_unique_job_types(path: str) -> List[str]:
-    """Checks all different job types and returns a list of them
+    data = read(path)
 
-    Must call `read`
+    jobs = []
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    raise NotImplementedError
+    for dictJob in data:
+        for key, item in dictJob.items():
+            if item == "job_type":
+                jobs.append(item)
+    return jobs
 
 
 def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
-    """Filters a list of jobs by job_type
+    filteredJobs = []
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
+    for jobDict in jobs:
+        for key, item in jobDict.items():
+            if item == job_type:
+                filteredJobs.append(jobDict)
 
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    raise NotImplementedError
+    return filteredJobs
