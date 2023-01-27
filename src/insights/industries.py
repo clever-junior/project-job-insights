@@ -1,15 +1,29 @@
+import sys
 from typing import Dict, List
 
-# def get_unique_industries(path: str) -> List[str]:
-# data = read(path)
+from src.insights.jobs import read
 
-# industries = []
+sys.path.insert(
+    0,
+    "C:/Users/clever-junior/OneDrive/Documentos/Code/Trybe/Computer-Science/sd-021-a-project-job-insights/src/insights/jobs.py",
+)
 
-# for dictJob in data:
-#     for key, item in dictJob.items():
-#         if item == "industry":
-#             industries.append(item)
-# return industries
+
+path = "C:/Users/clever-junior/OneDrive/Documentos/Code/Trybe/Computer-Science/sd-021-a-project-job-insights/data/jobs.csv"
+
+
+def get_unique_industries(path: str) -> List[str]:
+    data = read(path)
+
+    industries = []
+
+    for dictJob in data:
+        for key, item in dictJob.items():
+            if key == "industry":
+                if item not in industries and len(item) > 0:
+                    industries.append(item)
+    print(key)
+    return industries
 
 
 def filter_by_industry(jobs: List[Dict], industry: str) -> List[Dict]:

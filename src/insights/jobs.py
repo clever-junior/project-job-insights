@@ -2,7 +2,7 @@ import csv
 from functools import lru_cache
 from typing import Dict, List
 
-path = "C:/Users/clever-junior/OneDrive/Documentos/Code/Trybe/Computer-Science/sd-021-a-project-job-insights/data/jobs.csv"
+
 @lru_cache
 def read(path: str) -> List[Dict]:
     with open(path, "r", encoding="utf8") as file:
