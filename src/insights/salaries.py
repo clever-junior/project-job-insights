@@ -1,11 +1,11 @@
-import sys
+# import sys
 from typing import Dict, List, Union
 
 from src.insights.jobs import read
 
-sys.path.append(
-    "C:/Users/clever-junior/OneDrive/Documentos/Code/Trybe/Computer-Science/sd-021-a-project-job-insights"
-)
+# sys.path.append(
+#     "C:/Users/clever-junior/OneDrive/Documentos/Code/Trybe/Computer-Science/sd-021-a-project-job-insights"
+# )
 
 
 def get_max_salary(path: str) -> int:
