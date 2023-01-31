@@ -1,6 +1,11 @@
+import sys
 from typing import Dict, List, Union
 
 from src.insights.jobs import read
+
+sys.path.append(
+    "C:/Users/clever-junior/OneDrive/Documentos/Code/Trybe/Computer-Science/sd-021-a-project-job-insights"
+)
 
 
 def get_max_salary(path: str) -> int:
@@ -17,21 +22,16 @@ def get_max_salary(path: str) -> int:
 
 
 def get_min_salary(path: str) -> int:
-    """Get the minimum salary of all jobs
+    data = read(path)
 
-    Must call `read`
+    salaries_list = []
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    for dict_job in data:
+        for key, item in dict_job.items():
+            if key == "min_salary" and item != "" and item != "invalid":
+                salaries_list.append(int(item))
 
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    raise NotImplementedError
+    return min(salaries_list)
 
 
 def matches_salary_range(job: Dict, salary: Union[int, str]) -> bool:
